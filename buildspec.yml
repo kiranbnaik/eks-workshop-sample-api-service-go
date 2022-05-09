@@ -32,6 +32,7 @@ phases:
       - aws eks update-kubeconfig --name $EKS_CLUSTER_NAME
       - kubectl config view
       - aws sts get-caller-identity
+      - kubectl get svc -A
       - kubectl apply -f hello-k8s.yml
       - printf '[{"name":"hello-k8s","imageUri":"%s"}]' $REPOSITORY_URI:$TAG > build.json
 artifacts:
